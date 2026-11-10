@@ -1,0 +1,17 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "menu": "footer",
+        "newsletter_heading": "Receba lançamentos e cupons",
+        "show_social": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,142 @@
+<header class="site-header" data-header>
+  <div class="page-width site-header__inner">
+    <button
+      class="site-header__icon site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="MobileMenu"
+      data-menu-toggle
+    >
+      <span class="visually-hidden">{{ 'accessibility.menu' | t }}</span>
+      {% render 'icon-menu' %}
+    </button>
+
+    <a class="site-header__logo" href="{{ routes.root_url }}">
+      {%- if settings.logo != blank -%}
+        {%- assign logo_alt = shop.name | escape -%}
+        {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio | round -%}
+        {{
+          settings.logo
+          | image_url: width: settings.logo_width
+          | image_tag:
+            class: 'site-header__logo-image',
+            widths: '60, 90, 120, 150, 180, 220',
+            height: logo_height,
+            width: settings.logo_width,
+            alt: logo_alt
+        }}
+      {%- else -%}
+        <span class="site-header__wordmark">{{ settings.brand_name | default: shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    {%- if section.settings.menu != blank -%}
+      <nav class="site-header__nav" aria-label="Principal">
+        <ul class="site-header__menu list-unstyled">
+          {%- for link in section.settings.menu.links -%}
+            <li>
+              <a
+                href="{{ link.url }}"
+                class="site-header__link{% if link.active %} is-active{% endif %}"
+              >
+                {{ link.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    {%- if section.settings.show_search -%}
+      <form class="site-header__search" action="{{ routes.search_url }}" method="get" role="search">
+        <input type="hidden" name="type" value="product">
+        <label class="visually-hidden" for="Search-{{ section.id }}">{{ 'general.search.search' | t }}</label>
+        <span class="site-header__search-icon">{% render 'icon-search' %}</span>
+        <input
+          id="Search-{{ section.id }}"
+          class="site-header__search-input"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+        >
+      </form>
+    {%- endif -%}
+
+    <div class="site-header__actions">
+      <a class="site-header__action site-header__account" href="{{ routes.account_url }}">
+        {% render 'icon-account' %}
+        <span class="site-header__action-label">
+          {%- if customer -%}
+            {{ customer.first_name | default: customer.email }}
+          {%- else -%}
+            {{ 'header.login' | t }}
+          {%- endif -%}
+        </span>
+      </a>
+
+      <a class="site-header__action site-header__cart" href="{{ routes.cart_url }}">
+        {% render 'icon-cart' %}
+        <span class="site-header__cart-count" aria-label="{{ 'header.cart_count' | t: count: cart.item_count }}">
+          {{ cart.item_count }}
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="MobileMenu" data-mobile-menu hidden>
+    <div class="mobile-menu__panel">
+      <div class="mobile-menu__top">
+        <span class="site-header__wordmark">{{ settings.brand_name | default: shop.name }}</span>
+        <button type="button" class="site-header__icon" data-menu-close>
+          <span class="visually-hidden">{{ 'accessibility.close' | t }}</span>
+          {% render 'icon-close' %}
+        </button>
+      </div>
+
+      {%- if section.settings.show_search -%}
+        <form class="mobile-menu__search" action="{{ routes.search_url }}" method="get" role="search">
+          <input type="hidden" name="type" value="product">
+          <input
+            class="site-header__search-input"
+            type="search"
+            name="q"
+            placeholder="{{ 'general.search.placeholder' | t }}"
+          >
+        </form>
+      {%- endif -%}
+
+      {%- if section.settings.menu != blank -%}
+        <ul class="mobile-menu__links list-unstyled">
+          {%- for link in section.settings.menu.links -%}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <a class="mobile-menu__account" href="{{ routes.account_url }}">{{ 'header.login' | t }}</a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.header.settings.menu.label",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "t:sections.header.settings.show_search.label",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,106 @@
+{
+  "general": {
+    "search": {
+      "search": "Buscar",
+      "placeholder": "Marca, modelo ou produto",
+      "no_results": "Nenhum produto encontrado para \"{{ terms }}\"",
+      "results_with_count": {
+        "one": "{{ count }} resultado para \"{{ terms }}\"",
+        "other": "{{ count }} resultados para \"{{ terms }}\""
+      }
+    },
+    "continue_shopping": "Continuar comprando",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Próxima"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Ir para o conteúdo",
+    "close": "Fechar",
+    "menu": "Menu",
+    "cart": "Carrinho",
+    "account": "Conta",
+    "previous": "Anterior",
+    "next": "Próximo"
+  },
+  "header": {
+    "sell": "Vender",
+    "login": "Entrar",
+    "cart_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} itens"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Adicionar ao carrinho",
+      "sold_out": "Esgotado",
+      "unavailable": "Indisponível",
+      "quantity": "Quantidade",
+      "price": {
+        "from_price_html": "A partir de {{ price }}",
+        "regular_price": "Preço normal",
+        "sale_price": "Preço promocional",
+        "unit_price": "Preço unitário"
+      }
+    }
+  },
+  "collections": {
+    "general": {
+      "empty": "Ainda não há produtos nesta coleção.",
+      "items_with_count": {
+        "one": "{{ count }} produto",
+        "other": "{{ count }} produtos"
+      }
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Carrinho",
+      "empty": "Seu carrinho está vazio",
+      "subtotal": "Subtotal",
+      "checkout": "Finalizar compra",
+      "update": "Atualizar",
+      "remove": "Remover",
+      "quantity": "Quantidade"
+    }
+  },
+  "customer": {
+    "login": {
+      "title": "Entrar",
+      "email": "E-mail",
+      "password": "Senha",
+      "submit": "Entrar",
+      "forgot_password": "Esqueceu a senha?",
+      "create_account": "Criar conta"
+    },
+    "register": {
+      "title": "Criar conta",
+      "first_name": "Nome",
+      "last_name": "Sobrenome",
+      "email": "E-mail",
+      "password": "Senha",
+      "submit": "Criar"
+    },
+    "account": {
+      "title": "Conta",
+      "details": "Dados da conta",
+      "orders": "Histórico de pedidos",
+      "view_addresses": "Ver endereços",
+      "logout": "Sair",
+      "no_orders": "Você ainda não fez nenhum pedido."
+    }
+  },
+  "sections": {
+    "empty_collection": "Vincule uma coleção no editor de temas para exibir produtos aqui.",
+    "trust": {
+      "title": "Produtos originais, compra protegida"
+    }
+  },
+  "404": {
+    "title": "Página não encontrada",
+    "subtext": "Esta página não existe.",
+    "link": "Voltar para o início"
+  }
+}

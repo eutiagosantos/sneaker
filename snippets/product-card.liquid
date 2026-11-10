@@ -1,0 +1,38 @@
+{% comment %}
+  Renders a product card
+  Accepts:
+  - product: {Object} Product Liquid object
+  - show_vendor: {Boolean} optional
+{% endcomment %}
+
+{%- if product != blank -%}
+  <article class="product-card">
+    <a class="product-card__media" href="{{ product.url }}">
+      {%- if product.featured_media -%}
+        {%- assign card_alt = product.featured_media.alt | default: product.title | escape -%}
+        {{
+          product.featured_media
+          | image_url: width: 600
+          | image_tag:
+            loading: 'lazy',
+            widths: '200, 300, 400, 500, 600',
+            sizes: '(min-width: 990px) 220px, 45vw',
+            class: 'product-card__image',
+            alt: card_alt
+        }}
+      {%- else -%}
+        <div class="product-card__placeholder" aria-hidden="true"></div>
+      {%- endif -%}
+    </a>
+
+    <div class="product-card__info">
+      {%- if show_vendor -%}
+        <p class="product-card__vendor">{{ product.vendor }}</p>
+      {%- endif -%}
+      <h3 class="product-card__title">
+        <a href="{{ product.url }}">{{ product.title }}</a>
+      </h3>
+      {% render 'price', product: product %}
+    </div>
+  </article>
+{%- endif -%}

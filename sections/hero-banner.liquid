@@ -1,0 +1,145 @@
+<section class="hero" data-hero aria-label="{{ section.settings.accessibility_label | default: 'Destaques' }}">
+  <div class="hero__track" data-hero-track>
+    {%- for block in section.blocks -%}
+      <article
+        class="hero__slide{% if forloop.first %} is-active{% endif %}"
+        style="--hero-bg: {{ block.settings.background }};"
+        {{ block.shopify_attributes }}
+        data-hero-slide
+      >
+        <div class="page-width hero__content">
+          <div class="hero__copy">
+            {%- if block.settings.heading != blank -%}
+              <h2 class="hero__heading">{{ block.settings.heading }}</h2>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="hero__text">{{ block.settings.text }}</p>
+            {%- endif -%}
+            {%- if block.settings.button_label != blank -%}
+              <a class="button button--light" href="{{ block.settings.button_link | default: '#' }}">
+                {{ block.settings.button_label }}
+                <span aria-hidden="true">→</span>
+              </a>
+            {%- endif -%}
+          </div>
+
+          <div class="hero__media">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 1200
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 800, 1000, 1200',
+                  sizes: '(min-width: 990px) 480px, 70vw',
+                  class: 'hero__image',
+                  alt: block.settings.heading
+              }}
+            {%- else -%}
+              <div class="hero__placeholder" aria-hidden="true"></div>
+            {%- endif -%}
+          </div>
+        </div>
+      </article>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.blocks.size > 1 -%}
+    <button class="hero__nav hero__nav--prev" type="button" data-hero-prev aria-label="{{ 'accessibility.previous' | t }}">‹</button>
+    <button class="hero__nav hero__nav--next" type="button" data-hero-next aria-label="{{ 'accessibility.next' | t }}">›</button>
+    <div class="hero__dots" data-hero-dots>
+      {%- for block in section.blocks -%}
+        <button
+          type="button"
+          class="hero__dot{% if forloop.first %} is-active{% endif %}"
+          data-hero-dot="{{ forloop.index0 }}"
+          aria-label="Slide {{ forloop.index }}"
+        ></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.hero-banner.name",
+  "tag": "section",
+  "class": "section-hero",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "accessibility_label",
+      "label": "Rótulo de acessibilidade",
+      "default": "Destaques"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "t:sections.hero-banner.blocks.slide.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.hero-banner.blocks.slide.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.hero-banner.blocks.slide.settings.heading.label",
+          "default": "Novos drops da semana"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:sections.hero-banner.blocks.slide.settings.text.label",
+          "default": "Modelos selecionados com estoque limitado e numeração completa."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.hero-banner.blocks.slide.settings.button_label.label",
+          "default": "Ver lançamentos"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.hero-banner.blocks.slide.settings.button_link.label"
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "t:sections.hero-banner.blocks.slide.settings.background.label",
+          "default": "#0E3B32"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.hero-banner.name",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "heading": "Novos drops da semana",
+            "text": "Modelos selecionados com estoque limitado e numeração completa.",
+            "button_label": "Ver lançamentos",
+            "background": "#0E3B32"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "heading": "Essenciais do dia a dia",
+            "text": "Lifestyle e performance com frete rápido para todo o Brasil.",
+            "button_label": "Explorar agora",
+            "background": "#111111"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

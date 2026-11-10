@@ -1,0 +1,38 @@
+<div class="customer page-width section-spacing">
+  <h1 class="customer__title">{{ 'customer.login.title' | t }}</h1>
+
+  {%- form 'customer_login', class: 'customer__form' -%}
+    {%- if form.errors -%}
+      <div class="form-errors">{{ form.errors | default_errors }}</div>
+    {%- endif -%}
+
+    <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+    <input id="CustomerEmail" type="email" name="customer[email]" autocomplete="email" required>
+
+    <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+    <input id="CustomerPassword" type="password" name="customer[password]" autocomplete="current-password" required>
+
+    <button type="submit" class="button button--dark">{{ 'customer.login.submit' | t }}</button>
+  {%- endform -%}
+
+  <p class="customer__links">
+    <a href="#recover">{{ 'customer.login.forgot_password' | t }}</a>
+    <a href="{{ routes.account_register_url }}">{{ 'customer.login.create_account' | t }}</a>
+  </p>
+
+  <div id="recover" class="customer__recover">
+    <h2>{{ 'customer.login.forgot_password' | t }}</h2>
+    {%- form 'recover_customer_password' -%}
+      <label for="RecoverEmail">{{ 'customer.login.email' | t }}</label>
+      <input id="RecoverEmail" type="email" name="email" autocomplete="email" required>
+      <button type="submit" class="button button--dark">Enviar</button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-login.name",
+  "settings": []
+}
+{% endschema %}

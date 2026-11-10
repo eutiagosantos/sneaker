@@ -1,0 +1,224 @@
+{
+  "settings_schema": {
+    "brand": {
+      "name": "Brand",
+      "settings": {
+        "brand_name": {
+          "label": "Store name"
+        },
+        "logo": {
+          "label": "Logo"
+        },
+        "logo_width": {
+          "label": "Logo width"
+        },
+        "favicon": {
+          "label": "Favicon"
+        }
+      }
+    },
+    "colors": {
+      "name": "Colors",
+      "settings": {
+        "header_bg": {
+          "label": "Header background"
+        },
+        "header_text": {
+          "label": "Header text"
+        },
+        "page_bg": {
+          "label": "Page background"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "muted": {
+          "label": "Muted text"
+        },
+        "card": {
+          "label": "Card background"
+        },
+        "accent": {
+          "label": "Accent"
+        },
+        "sale": {
+          "label": "Sale badge"
+        }
+      }
+    },
+    "social": {
+      "name": "Social media"
+    }
+  },
+  "sections": {
+    "header": {
+      "name": "Header",
+      "settings": {
+        "menu": {
+          "label": "Menu"
+        },
+        "show_search": {
+          "label": "Show search"
+        }
+      }
+    },
+    "announcement-bar": {
+      "name": "Announcement bar",
+      "settings": {
+        "text": {
+          "label": "Text"
+        },
+        "link": {
+          "label": "Link"
+        }
+      }
+    },
+    "footer": {
+      "name": "Footer",
+      "settings": {
+        "menu": {
+          "label": "Menu"
+        },
+        "newsletter_heading": {
+          "label": "Newsletter heading"
+        },
+        "show_social": {
+          "label": "Show social links"
+        }
+      }
+    },
+    "hero-banner": {
+      "name": "Hero banner",
+      "blocks": {
+        "slide": {
+          "name": "Slide",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "heading": {
+              "label": "Heading"
+            },
+            "text": {
+              "label": "Text"
+            },
+            "button_label": {
+              "label": "Button label"
+            },
+            "button_link": {
+              "label": "Button link"
+            },
+            "background": {
+              "label": "Background color"
+            }
+          }
+        }
+      }
+    },
+    "category-cards": {
+      "name": "Category cards",
+      "blocks": {
+        "category": {
+          "name": "Category",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "link": {
+              "label": "Link"
+            }
+          }
+        }
+      }
+    },
+    "brand-rail": {
+      "name": "Brand rail",
+      "blocks": {
+        "brand": {
+          "name": "Brand",
+          "settings": {
+            "title": {
+              "label": "Name"
+            },
+            "link": {
+              "label": "Link"
+            }
+          }
+        }
+      }
+    },
+    "product-rail": {
+      "name": "Product rail",
+      "settings": {
+        "title": {
+          "label": "Heading"
+        },
+        "collection": {
+          "label": "Collection"
+        },
+        "products_to_show": {
+          "label": "Products to show"
+        }
+      }
+    },
+    "trust-banner": {
+      "name": "Trust banner",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        }
+      },
+      "blocks": {
+        "item": {
+          "name": "Item",
+          "settings": {
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "main-collection": {
+      "name": "Collection",
+      "settings": {
+        "products_per_page": {
+          "label": "Products per page"
+        }
+      }
+    },
+    "main-product": {
+      "name": "Product"
+    },
+    "main-cart": {
+      "name": "Cart"
+    },
+    "main-search": {
+      "name": "Search"
+    },
+    "main-page": {
+      "name": "Page"
+    },
+    "main-404": {
+      "name": "404"
+    },
+    "main-list-collections": {
+      "name": "Collections list"
+    },
+    "main-login": {
+      "name": "Login"
+    },
+    "main-register": {
+      "name": "Register"
+    },
+    "main-account": {
+      "name": "Account"
+    }
+  }
+}

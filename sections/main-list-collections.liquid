@@ -1,0 +1,30 @@
+<div class="list-collections page-width section-spacing">
+  <h1 class="list-collections__title">Coleções</h1>
+  <div class="list-collections__grid">
+    {%- for collection in collections -%}
+      {%- unless collection.handle == 'frontpage' -%}
+        <a class="list-collections__card" href="{{ collection.url }}">
+          <div class="list-collections__media">
+            {%- if collection.featured_image -%}
+              {{
+                collection.featured_image
+                | image_url: width: 600
+                | image_tag: loading: 'lazy', class: 'list-collections__image', alt: collection.title
+              }}
+            {%- else -%}
+              <div class="category-card__placeholder" aria-hidden="true"></div>
+            {%- endif -%}
+          </div>
+          <span class="list-collections__name">{{ collection.title }}</span>
+        </a>
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-list-collections.name",
+  "settings": []
+}
+{% endschema %}

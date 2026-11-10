@@ -1,0 +1,86 @@
+<section class="trust-banner section-spacing">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="trust-banner__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="trust-banner__grid">
+      {%- for block in section.blocks -%}
+        <article class="trust-banner__item" {{ block.shopify_attributes }}>
+          <div class="trust-banner__icon" aria-hidden="true">{{ forloop.index }}</div>
+          {%- if block.settings.title != blank -%}
+            <h3 class="trust-banner__title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <p class="trust-banner__text">{{ block.settings.text }}</p>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.trust-banner.name",
+  "tag": "section",
+  "class": "section-trust-banner",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.trust-banner.settings.heading.label",
+      "default": "Produtos originais, compra protegida"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "t:sections.trust-banner.blocks.item.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.trust-banner.blocks.item.settings.title.label",
+          "default": "100% original"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:sections.trust-banner.blocks.item.settings.text.label",
+          "default": "Trabalhamos apenas com peças autênticas de fornecedores verificados."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.trust-banner.name",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "title": "100% original",
+            "text": "Trabalhamos apenas com peças autênticas de fornecedores verificados."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Checagem rigorosa",
+            "text": "Cada pedido passa por revisão de qualidade antes do envio."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Compra protegida",
+            "text": "Pagamento seguro e suporte dedicado do pedido à entrega."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

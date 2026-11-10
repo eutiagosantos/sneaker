@@ -1,0 +1,40 @@
+<div class="customer page-width section-spacing">
+  <div class="customer__account-header">
+    <h1 class="customer__title">{{ 'customer.account.title' | t }}</h1>
+    <a href="{{ routes.account_logout_url }}">{{ 'customer.account.logout' | t }}</a>
+  </div>
+
+  <div class="customer__account-grid">
+    <div>
+      <h2>{{ 'customer.account.details' | t }}</h2>
+      <p>{{ customer.name }}</p>
+      <p>{{ customer.email }}</p>
+      <a href="{{ routes.account_addresses_url }}">{{ 'customer.account.view_addresses' | t }}</a>
+    </div>
+
+    <div>
+      <h2>{{ 'customer.account.orders' | t }}</h2>
+      {%- if customer.orders.size == 0 -%}
+        <p>{{ 'customer.account.no_orders' | t }}</p>
+      {%- else -%}
+        <ul class="customer__orders list-unstyled">
+          {%- for order in customer.orders -%}
+            <li class="customer__order">
+              <a href="{{ order.customer_url }}">{{ order.name }}</a>
+              <span>{{ order.created_at | date: '%d/%m/%Y' }}</span>
+              <span>{{ order.financial_status_label }}</span>
+              <strong>{{ order.total_price | money }}</strong>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-account.name",
+  "settings": []
+}
+{% endschema %}

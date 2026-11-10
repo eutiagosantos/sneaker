@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "heading": "Novos drops da semana",
+            "text": "Modelos selecionados com estoque limitado e numeração completa.",
+            "button_label": "Ver lançamentos",
+            "button_link": "shopify://collections/all",
+            "background": "#0E3B32"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "heading": "Essenciais do dia a dia",
+            "text": "Lifestyle e performance com frete rápido para todo o Brasil.",
+            "button_label": "Explorar agora",
+            "button_link": "shopify://collections/all",
+            "background": "#111111"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2"
+      ],
+      "settings": {
+        "accessibility_label": "Destaques"
+      }
+    },
+    "categories": {
+      "type": "category-cards",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "title": "Lifestyle",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "title": "Performance",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "title": "Basquete",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "title": "Slides",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4"
+      ],
+      "settings": {}
+    },
+    "brands": {
+      "type": "brand-rail",
+      "blocks": {
+        "brand_1": { "type": "brand", "settings": { "title": "Nike", "link": "shopify://collections/all" } },
+        "brand_2": { "type": "brand", "settings": { "title": "Adidas", "link": "shopify://collections/all" } },
+        "brand_3": { "type": "brand", "settings": { "title": "Jordan", "link": "shopify://collections/all" } },
+        "brand_4": { "type": "brand", "settings": { "title": "New Balance", "link": "shopify://collections/all" } },
+        "brand_5": { "type": "brand", "settings": { "title": "Asics", "link": "shopify://collections/all" } }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5"
+      ],
+      "settings": {}
+    },
+    "lancamentos": {
+      "type": "product-rail",
+      "settings": {
+        "title": "Lançamentos",
+        "collection": "lancamentos",
+        "products_to_show": 8
+      }
+    },
+    "mais_vendidos": {
+      "type": "product-rail",
+      "settings": {
+        "title": "Mais vendidos da semana",
+        "collection": "mais-vendidos",
+        "products_to_show": 8
+      }
+    },
+    "trust": {
+      "type": "trust-banner",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "100% original",
+            "text": "Trabalhamos apenas com peças autênticas de fornecedores verificados."
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "Checagem rigorosa",
+            "text": "Cada pedido passa por revisão de qualidade antes do envio."
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "Compra protegida",
+            "text": "Pagamento seguro e suporte dedicado do pedido à entrega."
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
+      "settings": {
+        "heading": "Produtos originais, compra protegida"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "brands",
+    "lancamentos",
+    "mais_vendidos",
+    "trust"
+  ]
+}

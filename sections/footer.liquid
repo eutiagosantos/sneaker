@@ -1,0 +1,89 @@
+<footer class="site-footer">
+  <div class="page-width site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="site-footer__logo" href="{{ routes.root_url }}">
+        {{ settings.brand_name | default: shop.name }}
+      </a>
+      <p class="site-footer__tagline">{{ shop.description | default: 'Loja de tênis originais com curadoria e envio para todo o Brasil.' }}</p>
+    </div>
+
+    {%- if section.settings.menu != blank -%}
+      <nav class="site-footer__nav" aria-label="Rodapé">
+        <ul class="list-unstyled">
+          {%- for link in section.settings.menu.links -%}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    <div class="site-footer__aside">
+      {%- if section.settings.newsletter_heading != blank -%}
+        <p class="site-footer__newsletter-heading">{{ section.settings.newsletter_heading }}</p>
+      {%- endif -%}
+
+      {%- form 'customer', class: 'site-footer__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="NewsletterEmail-{{ section.id }}">E-mail</label>
+        <input
+          id="NewsletterEmail-{{ section.id }}"
+          type="email"
+          name="contact[email]"
+          class="site-footer__input"
+          value="{{ form.email }}"
+          placeholder="seu@email.com"
+          required
+        >
+        <button type="submit" class="button button--dark">Assinar</button>
+      {%- endform -%}
+
+      {%- if section.settings.show_social -%}
+        <ul class="site-footer__social list-unstyled">
+          {%- if settings.social_instagram != blank -%}
+            <li><a href="{{ settings.social_instagram }}">Instagram</a></li>
+          {%- endif -%}
+          {%- if settings.social_tiktok != blank -%}
+            <li><a href="{{ settings.social_tiktok }}">TikTok</a></li>
+          {%- endif -%}
+          {%- if settings.social_twitter != blank -%}
+            <li><a href="{{ settings.social_twitter }}">X</a></li>
+          {%- endif -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="page-width">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.footer.settings.menu.label",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "t:sections.footer.settings.newsletter_heading.label",
+      "default": "Receba lançamentos e cupons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "t:sections.footer.settings.show_social.label",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

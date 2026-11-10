@@ -1,0 +1,73 @@
+{%- liquid
+  assign collection = section.settings.collection
+  assign products_to_show = section.settings.products_to_show | default: 8
+-%}
+
+<section class="product-rail section-spacing" data-product-rail>
+  <div class="page-width">
+    <div class="product-rail__header">
+      {%- if section.settings.title != blank -%}
+        <h2 class="product-rail__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+
+      {%- if collection != blank and collection.products_count > 0 -%}
+        <div class="product-rail__controls">
+          <button type="button" class="rail-nav" data-rail-prev aria-label="{{ 'accessibility.previous' | t }}">‹</button>
+          <button type="button" class="rail-nav" data-rail-next aria-label="{{ 'accessibility.next' | t }}">›</button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if collection != blank and collection.products_count > 0 -%}
+      <div class="product-rail__viewport">
+        <div class="product-rail__track" data-rail-track>
+          {%- for product in collection.products limit: products_to_show -%}
+            <div class="product-rail__item">
+              {% render 'product-card', product: product %}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- else -%}
+      <p class="empty-state">{{ 'sections.empty_collection' | t }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.product-rail.name",
+  "tag": "section",
+  "class": "section-product-rail",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.product-rail.settings.title.label",
+      "default": "Lançamentos"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.product-rail.settings.collection.label"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 16,
+      "step": 1,
+      "label": "t:sections.product-rail.settings.products_to_show.label",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.product-rail.name",
+      "settings": {
+        "title": "Lançamentos"
+      }
+    }
+  ]
+}
+{% endschema %}

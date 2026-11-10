@@ -1,0 +1,56 @@
+<section class="brand-rail section-spacing">
+  <div class="page-width">
+    <div class="brand-rail__row">
+      {%- for block in section.blocks -%}
+        <a
+          class="brand-rail__item"
+          href="{{ block.settings.link | default: '#' }}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="brand-rail__circle">{{ block.settings.title | slice: 0, 2 | upcase }}</span>
+          <span class="brand-rail__label">{{ block.settings.title }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.brand-rail.name",
+  "tag": "section",
+  "class": "section-brand-rail",
+  "max_blocks": 16,
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "t:sections.brand-rail.blocks.brand.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.brand-rail.blocks.brand.settings.title.label",
+          "default": "Nike"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.brand-rail.blocks.brand.settings.link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.brand-rail.name",
+      "blocks": [
+        { "type": "brand", "settings": { "title": "Nike" } },
+        { "type": "brand", "settings": { "title": "Adidas" } },
+        { "type": "brand", "settings": { "title": "Jordan" } },
+        { "type": "brand", "settings": { "title": "New Balance" } },
+        { "type": "brand", "settings": { "title": "Asics" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
